@@ -11,31 +11,46 @@ const setupInput = (conn) => {
   return stdin;
 };
 
+let current;
+
 const handleUserInput = (key) => {
   if (key === '\u0003') {
     process.exit();
   }
   switch (key) {
-    case 'w':
+  case 'w':
+    clearInterval(current);
+    current = setInterval(() => {
       connection.write("Move: up");
-      break;
-    case 'a':
+    }, 150);
+    break;
+  case 'a':
+    clearInterval(current);
+    current = setInterval(() => {
       connection.write("Move: left");
-      break;
-    case 's':
+    }, 150);
+    break;
+  case 's':
+    clearInterval(current);
+    current = setInterval(() => {
       connection.write("Move: down");
-      break;
-    case 'd':
+    }, 150);
+    break;
+  case 'd':
+    clearInterval(current);
+    current = setInterval(() => {
       connection.write("Move: right");
-      break;
-    case 'f':
-      connection.write("Say: *snake sounds*");
-      break;
-    case 'e':
-      connection.write("Say: 🐍");
-      break;
+    }, 150);
+    break;
+  case 'f':
+    connection.write("Say: *snake sounds*");
+    break;
+  case 'e':
+    connection.write("Say: 🐍");
+    break;
   }
 };
+
 
 stdin.on('data', handleUserInput);
 
