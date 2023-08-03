@@ -28,6 +28,12 @@ const handleUserInput = (key) => {
     case 'd':
       connection.write("Move: right");
       break;
+    case 'f':
+      connection.write("Say: *snake sounds*");
+      break;
+    case 'e':
+      connection.write("Say: 🐍");
+      break;
   }
 };
 
